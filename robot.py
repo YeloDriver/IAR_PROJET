@@ -55,20 +55,25 @@ class map:
                 self.map[0:randint(0,self.y-1),randint(0,self.x-1)]=3
             if(frontier==3):
                 self.map[randint(0,self.y-1),0:randint(0,self.x-1)]=3
+    def wall_test(self):
+        self.map[55:100,40]=3
+        self.map[0:35,55]=3
+        self.map[50,60:100]=3
     #show the robot on the map    
     def showRobot(self,robot,action):
         robot.run(action)
         #robot touch the frontier or the wall
         if(robot.posX>=self.x or robot.posY>=self.y or robot.posX<0 or robot.posY<0 or self.map[robot.posY,robot.posX]==3):
             robot.back()
-        self.map[robot.posY,robot.posX]=1
-        self.state=self.map.copy()
-        self.state[robot.posY,robot.posX]=2
-        robot.battery-=1
-        robot.end()
+        else:
+            self.map[robot.posY,robot.posX]=1
+            self.state=self.map.copy()
+            self.state[robot.posY,robot.posX]=2
+            robot.battery-=1
+            robot.end()
 
-m=map(10,10)
-m.wall(3)
+m=map(100,100)
+m.wall_test()
 r=robot()
 while(True):
     m.showRobot(r,randint(0,3))
