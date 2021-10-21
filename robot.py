@@ -9,6 +9,7 @@ class robot:
         self.battery=50
         #state 1:active 2:wait 3:return
         self.state=1
+    #robot run one step in a period and a period cost 1 battery
     def run(self,action):
         self.action=action
         if(self.action==0):
@@ -19,6 +20,7 @@ class robot:
             self.posY-=1
         if(self.action==3):
             self.posX-=1
+    #if there is a wall or a frontier before the robot, the last action will not happen
     def back(self):
         if(self.action==0):
             self.posY-=1
@@ -28,6 +30,7 @@ class robot:
             self.posY+=1
         if(self.action==3):
             self.posX+=1
+    #out of battery
     def end(self):
         if(self.battery==0):
             exit()
@@ -55,6 +58,7 @@ class map:
                 self.map[0:randint(0,self.y-1),randint(0,self.x-1)]=3
             if(frontier==3):
                 self.map[randint(0,self.y-1),0:randint(0,self.x-1)]=3
+    #wall for test which will not change
     def wall_test(self):
         self.map[55:100,40]=3
         self.map[0:35,55]=3
