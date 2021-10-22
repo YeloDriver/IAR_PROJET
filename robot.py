@@ -1,13 +1,20 @@
 import numpy as np 
 from matplotlib import pyplot as plt 
 from random import randint
+
+MAPSIZE_X = 10
+MAPSIZE_Y = 10
+BATTERY = 100
+#state 1:active 2:wait 3:return
+STATE = [1,2,3]
+ACTION = [0,1,2,3]
+
 class robot:
     def __init__(self):
         self.posX=0
         self.posY=0
         self.action=0
-        self.battery=50
-        #state 1:active 2:wait 3:return
+        self.battery = BATTERY
         self.state=1
     #robot run one step in a period and a period cost 1 battery
     def run(self,action):
@@ -34,6 +41,7 @@ class robot:
     def end(self):
         if(self.battery==0):
             exit()
+
 class map:
     #create a new map
     def __init__(self,x,y):
@@ -60,9 +68,9 @@ class map:
                 self.map[randint(0,self.y-1),0:randint(0,self.x-1)]=3
     #wall for test which will not change
     def wall_test(self):
-        self.map[55:100,40]=3
-        self.map[0:35,55]=3
-        self.map[50,60:100]=3
+        self.map[5:10,4]=3
+        self.map[0:3,5]=3
+        self.map[5,6:10]=3
     #show the robot on the map    
     def showRobot(self,robot,action):
         robot.run(action)
@@ -76,10 +84,12 @@ class map:
             robot.battery-=1
             robot.end()
 
-m=map(100,100)
-m.wall_test()
-r=robot()
-while(True):
-    m.showRobot(r,randint(0,3))
-    #delete if don't want to show the graph
-    m.show()
+
+if __name__ == "__main__":
+    m = map(MAPSIZE_X, MAPSIZE_Y)
+    m.wall_test()
+    r=robot()
+    while(True):
+        m.showRobot(r,randint(0,3))
+        #delete if don't want to show the graph
+        m.show()
