@@ -28,7 +28,7 @@
 - dp.py : le fichier de l'algorithme 'Dynamic Programming', il permet de s'exécuter tout seul
 - ql.py : le fichier de l'algorithme 'q learning', il permet de s'exécuter tout seul
 - mc.py : le fichier de l'algorithme 'Monte Carlo', il permet de s'exécuter tout seul
-- main.py : le fichier qui permet de présenter tous les trois algorithmes 
+- main.py : le fichier qui permet de présenter tous les trois algorithmes and you can choose to see the trace with the algorithme or not
 - ## l'exécution : python main.py
 
 # les problèmes de notre projet
