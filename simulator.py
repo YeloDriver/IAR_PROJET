@@ -20,7 +20,7 @@ class simulator:
         if(not map.valid(newState)):
             newState=state.copy()
             #newState[2]-=1
-            return -10,1,newState
+            return -100,1,newState
         if(state[3]+2==action or state[3]-2==action):
             return -3,1,newState
         reward=self.reward(newState,map)
