@@ -4,8 +4,8 @@
 - les murs et les frontières ne peuvent pas être franchis
 - les carreaux de la carte a trois états: 0 pour ceux non balayés, 1 pour ceux balayés, 3 pour les mur (2 pour présenter le robot sur la carte, mais c'était seulement utilisé dans la fonction de montrer des traces)
 - pour le reward, dans le cas de ql, R(s) peut avoir plusieurs valeurs selon la trace du coup le coefficient gamma pour max(q(s',a')) devait être très bas
-- pour l'entraînement plus rapide, nous avons utilisé le nombre d'épisode constant au lieu d'entraînement jusqu'à la convergence
-  
+- pour l'entraînement plus rapide, nous avons utilisé le nombre d'épisode constant (1000) au lieu d'entraînement jusqu'à la convergence (mais le code est déjà écrit. Si vous avez du temps, vous pourrez essayer. D'après notre essaie, pour les cartes petites, assez d'entraînement nous donne une bonne résultat mais pour celles grandes, il semble que l'entraînement n'est jamais assez)
+- the reward graph is useless for dynamic programming
 
 # les règles de reward
 - marcher sur un carreau non balayé : +5
