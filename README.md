@@ -5,12 +5,13 @@
 - les carreaux de la carte a trois états: 0 pour ceux non balayés, 1 pour ceux balayés, 3 pour les mur (2 pour présenter le robot sur la carte, mais c'était seulement utilisé dans la fonction de montrer des traces)
 - pour le reward, dans le cas de ql, R(s) peut avoir plusieurs valeurs selon la trace du coup le coefficient gamma pour max(q(s',a')) devait être très bas
 - pour l'entraînement plus rapide, nous avons utilisé le nombre d'épisode constant au lieu d'entraînement jusqu'à la convergence
+- pour le procédure de rentrer, comme il ne faut pas utiliser la fonction d'aspiration et les autres pour le balayage. La consommation de l'énergie est négligeable et battery==0 veut aussi dire qu'il en reste assez de batterie pour la rentrée.
 
 # les règles de reward
 - marcher sur un carreau non balayé : +5
 - marcher sur un carreau balayé : +0
-- battery==0 : +0 et arrêter 
-- la carte est tout balayé : +100
+- battery==0 : +0 et arrêter et passer l'état de robot à l'état 2 (remain stationary and wait)
+- la carte est tout balayé : +100 et passer l'état de robot à l'état 3 (go back to home)
 
 # les états utilisés dans notre algorithme
 [robot.posX,robot.posY,robot.battery,robot.last_action]
