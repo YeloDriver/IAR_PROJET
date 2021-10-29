@@ -15,6 +15,11 @@
 # les états utilisés dans notre algorithme
 [robot.posX,robot.posY,robot.battery,robot.last_action]
 
+# les auteurs des algorithmes
+- q learning et monte carlo sont écrits par Jicheng Zhao (jicheng.zhao@insa-lyon.fr)
+- dynamic programming est écrit par Hui Huang (hui.huang@insa-lyon.fr)
+- si vous avez des questions concernants les algorithmes, n'hésitez pas à nous écrire pour demander
+
 # la présentation des fichiers
 - robot.py : il y a des structures des robots et des cartes dedans, y compris leurs règles de mouvement
 - simulator.py : ce sont des règles de reward pour les états et les actions
@@ -23,3 +28,7 @@
 - mc.py : le fichier de l'algorithme 'Monte Carlo', il permet de s'exécuter tout seul
 - main.py : le fichier qui permet de présenter tous les trois algorithmes 
 - ## l'exécution : python main.py
+
+# les problèmes de notre projet
+1. Nous n'arrivons pas trouvé un bon état pour exprimer la trace dans les tableaux (Nous avons testé beaucoup de paramètres mais aucun ne marche mieux que celui là). Notre trace n'a pas une bonne performance avec un entraînement non assez
+2. Il faut trop d'entraînement pour arriver à la convergence de q table et ça coûte trop longtemps
