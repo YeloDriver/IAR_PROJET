@@ -1,6 +1,8 @@
 import numpy as np
 from random import randint
 from matplotlib import pyplot as plt 
+
+# this is the definition of the robot
 class state:
     def __init__(self,batteryMax):
         self.x=0
@@ -46,6 +48,7 @@ class state:
         self.x=newState[0]
         self.y=newState[1]
         self.battery=newState[2]
+# the definition of the map
 class map:
     def __init__(self,x,y):
         self.x=x
@@ -53,17 +56,17 @@ class map:
         self.map=np.zeros((x,y))
         self.cleaned=np.zeros((x,y))
         self.cleaned[0,0]=1
-        #self.wall()
+        self.wall()
     
-    #function for creating walls
+    #function for creating walls, this is an exemple and if you want, you can change it
     def wall(self):
-        self.map[0:4,4]=3
-        self.cleaned[0:4,4]=3
+        self.map[0:(self.y//2),(self.x//2)]=3
+        self.cleaned[0:(self.y//2),(self.x//2)]=3
     #initialize the cleaned map
     def init(self):
         self.cleaned=np.zeros((self.x,self.y))
         self.cleaned[0,0]=1
-        #self.wall()
+        self.wall()
     
     def valid(self,newState):
         if(newState[0]<0 or newState[0]>=self.x or newState[1]<0 or newState[1]>=self.y or self.cleaned[newState[1],newState[0]]==3):
@@ -84,7 +87,7 @@ class map:
 
 if __name__=="__main__":
     room=map(10,10)
-    clean_robot=state()
+    clean_robot=state(100)
     while(True):
         clean_robot.run(randint(0,3),room)
         
